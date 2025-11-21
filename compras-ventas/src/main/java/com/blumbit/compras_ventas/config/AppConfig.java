@@ -52,6 +52,7 @@ public class AppConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
+            System.out.println("USERNAME "+username);
             Usuario usuario = usuarioRepository.findByUsername(username)
             .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));  
             List<GrantedAuthority> grantedAuthorities = usuario.getRoles().stream()
